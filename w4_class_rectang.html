@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Class Rectang</title>
+
+
+</head>
+<body>
+    <script>
+        let Rectang = function() {
+            this.setWidth = function() {
+                this.width = prompt('nhap gia tri chieu rong');
+            }
+            this.setLength = function() {
+                this.length = prompt('nhap gia tri chieu dai');
+            }
+            this.getWidth = function() {
+                return this.width;
+            }
+            this.getLength = function() {
+                return this.length;
+            }
+            this.area = function() {
+                return this.width * this.length;
+            }
+            this.perimeter = function() {
+                return 2 * (this.width + this.length);
+            }
+        };
+
+        let rectang = new Rectang;
+
+        rectang.setWidth();
+        rectang.setLength();
+
+        document.write('length: ' + rectang.getLength() + ' width: ' + rectang.getWidth() +'<br>');
+        document.write('area: ' + rectang.area() + '<br>' + 'Perimeter: ' +rectang.perimeter());
+
+    </script>
+
+</body>
+
+
+</html>
