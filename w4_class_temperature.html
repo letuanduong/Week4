@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        let Temperature = function() {
+            this.setTemperatureCelsius = function() {
+                this.celsius = Number(prompt('nhap nhiet do celsius:'));
+                while(this.celsius < -273) {
+                    this.celsius = Number(prompt('nhap lai (min celsius = -273)'));
+                }
+            }
+            this.changeTemperature = function() {
+               this.F = ((this.celsius)/5) * 9 + 32;
+
+            }
+            this.getCelsius = function() {
+                return this.celsius;
+            }
+            this.getF = function() {
+                return this.F;
+            }
+        };
+        
+        let temperature = new Temperature;
+
+        temperature.setTemperatureCelsius();
+        temperature.changeTemperature();
+
+        document.write('temperature Celsius: ' +temperature.getCelsius() + '<br>' + 'temperature F: ' + temperature.getF());
+
+
+    </script>
+
+
+</body>
+
+</html>
