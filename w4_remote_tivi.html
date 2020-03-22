@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        let Remote = function(tivi) {
+            //=============giá trị mặc định trên remote được thiết lập cho tivi//
+            this.setChanel = '3';
+            this.setVolume = '10';
+            tivi.setChangeChanel(this.setChanel);
+            tivi.setChangeVolume(this.setVolume);
+            //======bấm power trên remote để mở tivi; lưu lại các thông số thiết lập của tivi//
+            this.powerOn = function() {
+                tivi.turnOn();   
+            }
+            this.powerOff = function() {
+                tivi.turnOff();
+            }
+            //==================xác định trạn thái ti vi bật or tắt==//////////
+            this.infoTivi = function() {
+               return tivi.statusTivi();
+            }
+            //===============thay đổi kênh trên tivi;
+            this.controChanel = function() {
+                this.setChanel = prompt('nhap vao kenh');
+                if(this.setChanel < 1 || this.setChanel > 80)
+                    this.setChanel = prompt('kênh bạn nhập không có trong danh sách mời nhập lại kênh từ 1 đến 80');
+                tivi.setChangeChanel(this.setChanel);    
+            }
+            //=============tăng âm lượng tivi============
+            this.increaseVolume = function() {
+                this.setVolume++;
+                tivi.setChangeVolume(this.setVolume);
+            }
+            //===========giảm âm lượng tivi==========
+            this.decreaseVolume = function() {
+                this.setVolume--;
+                tivi.setChangeVolume(this.setVolume);
+            }
+        }
+
+        let Tivi = function() {
+            this.status = false;
+            this.chanel = '0ff';
+            this.volume = 'off';
+            this.turnOn = function() {
+                this.status = true;
+            }
+            this.turnOff = function() {
+                this.status = false;
+                this.chanel = '0ff';
+                this.volume = 'off';
+            }
+            this.statusTivi = function() {
+                return this.status;
+            }
+            this.setChangeChanel = function(chanel) {
+                    this.chanel = chanel;
+            }
+            this.setChangeVolume = function(volume) {
+                    this.volume = volume;
+            }
+
+        }
+
+        let tivi = new Tivi;
+        let remote = new Remote(tivi);
+        function infoTivi() {
+           document.write('trạng thái: ' + (tivi.status === true ? 'bật' : 'tắt') +  ' kênh: ' + tivi.chanel + ' volume: ' + tivi.volume);
+        }
+    </script>
+        <h3>BẢNG ĐIỀU KHIỂN TIVI</h3>
+        <input type="button" value="ON" onclick="remote.powerOn()"\>
+        <input type="button" value="OFF" onclick="remote.powerOff()"\>
+        <input type="button" value="tăng volume" onclick="remote.increaseVolume()"\>
+        <input type="button" value="giảm volume" onclick="remote.decreaseVolume()"\>
+        <input type="button" value="chọn kênh" onclick="remote.controChanel()"\>
+        <hr>
+        <input type="button" name="màn hình" value="màn hình" onclick="infoTivi()"></input>
+
+</body>
+
+</html>
