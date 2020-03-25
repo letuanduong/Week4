@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Circle</title>
+</head>
+<body>
+    <script>
+        let Circle = function(Radian) {
+            this.bk = Radian;
+            this.getRadian = function() {
+                return this.bk;
+            }
+            this.getArea = function() {
+                return 3.14 * this.bk * this.bk;
+            }
+        };
+
+        let circle = new Circle(2);
+        let radian = circle.getRadian();
+        let area = circle.getArea();
+
+        alert(' radian: ' + radian + ' area: ' + area + 'bk là: ' + circle.bk);       
+
+
+    </script>
+
+</body>
+</html>
