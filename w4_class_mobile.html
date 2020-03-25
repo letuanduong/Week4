@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Class Mobile</title>
+</head>
+<body>
+    <script src="w4_mobile.js"></script>
+    <script>
+
+        let nokia = new  Mobile;
+        let samsung = new Mobile;
+
+        //==sạc đầy pin cho 2 điện thoại;
+
+        for(let i = 0; i < 100; i++) {
+            nokia.chargerEnergy();
+            samsung.chargerEnergy();
+        }
+        //kiểm tra trạng thái.
+        document.write(nokia.statusEnergy() + ' ' + samsung.statusEnergy());
+        //bật điện thoại
+        nokia.powerOn();
+        samsung.powerOn();
+        document.write(nokia.statusMobile() + ' ' +samsung.statusMobile() + '<hr>');
+
+        //nokia gửi tin cho samsung//
+        nokia.writeMessage();  // nokia viết tin nhắn lưu vào documnet
+        nokia.sendMessage(nokia.document[0]);      //nokia gửi tin nhắn//
+        samsung.receiveMessage(nokia.sendMessage[0]); //sam sung nhận tin nhắn/
+
+        document.write(nokia.draffMessage() +' '+nokia.readSendMessage() +' ' + samsung.readReceiveMessage());
+
+        document.write('<hr>');
+
+        samsung.writeMessage();
+        samsung.sendMessage(samsung.document[0]);
+        nokia.receiveMessage(samsung.sendMessage[0]);
+
+        document.write(samsung.draffMessage() +' '+ samsung.readSendMessage() +' ' + nokia.readReceiveMessage());
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
