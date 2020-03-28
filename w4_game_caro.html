@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        button {
+            background-color: rgb(126, 179, 170);
+            size: 40px;
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id = 'cell'></div>
+    <script>
+//======================================Vẽ lớp bàn cờ==============================================//   
+    let classBoard = function(rows, cols) {
+        this.rows = rows;
+        this.cols = cols;
+        this.drawBoard = function() {
+            let cell = '<table cellspacing="0" cellpadding="0" style="position: absolute;">';
+            for(let i = 1; i <= this.rows; i++) {
+                cell += '<tr>';
+                for (let j = 1; j <= this.cols; j++) {
+                    cell += '<td>';
+                        cell += '<button type = "button" id ="'+i+','+j+'" onClick="Start(this)">';       
+                        cell += '</button>';
+                    cell += '</td>';                    
+                }    
+                cell += '<tr>';
+            }
+            cell += '</table>';
+            document.getElementById('cell').innerHTML = cell;            
+        }
+    };
+//====================================lớp quân cờ==================================================//
+    let classCell = function() {
+        this.value =''
+        this.indexRows = '';
+        this.indexCols = '';
+        this.convertId = function(id) {
+            let count = 0;
+            for(let i = 0; i < id.length; i++) {
+                if(id[i] !== ',') {
+                    count++;
+                    this.indexRows += id[i];                  
+                } else break;                    
+            }
+            for(let j = count +1; j < id.length; j++) {
+                this.indexCols += id[j];
+            }
+        }
+    }
+//====================================Lớp ma trận===================================================
+    let classMatrix = function(){
+        this.array = []
+        this.creat = function(n, m) {
+            for (let i = 1; i <= n; i++) {
+                this.array[i] = [];
+                for (let j = 1; j <= m; j++) {
+                    this.array[i][j] = ' ';
+                }
+            }
+        }
+        this.getValue = function(cell) {
+            return this.array[cell.indexRows][cell.indexCols] = cell.value;
+        }
+        this.checkWin = function(char, rows, cols) {
+            let count = [0, 0, 0, 0];
+            this.char = char;
+            this.r = rows;
+            this.c = cols;
+            let  i = [0, 0, 0, 0, 0, 0, 0, 0];
+            while(this.array[Number(this.r) + Number(i[0])][Number(this.c) + Number(i[0])] === this.char) {
+                i[0]++;
+                if(count[0]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r) - Number(i[1])][Number(this.c) - Number(i[1])] === this.char) {
+                i[1]++;
+                if(count[0]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r) - Number(i[2])][Number(this.c) + Number(i[2])] === this.char) {
+                i[2]++
+                if(count[1]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r) + Number(i[3])][Number(this.c) - Number(i[3])] === this.char) {
+                i[3]++;
+                if(count[1]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r)][Number(this.c) + Number(i[4])] === this.char) {
+                i[4]++;
+                if(count[2]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r)][Number(this.c) - Number(i[5])] === this.char) {
+                i[5]++;
+                if(count[2]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r) + Number(i[6])][Number(this.c)] === this.char) {
+                i[6]++;
+                if(count[3]++ === 5)
+                    return true;
+            }
+            while(this.array[Number(this.r) - Number(i[7])][Number(this.c)] === this.char) {
+                i[7]++;
+                if(count[3]++ === 5)
+                    return true;
+            }   
+        } 
+    }       
+//============================================Lớp người chơi======================================
+    let gamePlayer = function(value, state) {
+        this.value = value;
+        this.state = state;
+    }
+
+//================================================================================================
+//======================================Game play=================================================    
+    const n = 15;;
+    const m = 20;
+    let flag = true;
+    let board = new classBoard(n, m);
+    let matrix = new classMatrix;
+    let playerX = new gamePlayer('X', false);
+    let playerO = new gamePlayer('O', true);    
+
+    board.drawBoard();    
+    matrix.creat(n, m); 
+
+    function Start(click) {  
+        this.click = click;     
+        let cell = new classCell;
+        if(flag) {
+            this.click.innerHTML = playerX.value;
+            this.click.value = playerX.value;
+            flag = playerX.state;
+        } else {
+            this.click.innerHTML = playerO.value;
+            this.click.value = playerX.value;
+            flag = playerO.state;
+        }
+        cell.convertId(this.click.id);
+        cell.value = this.click.innerHTML;
+        matrix.getValue(cell);
+        if(matrix.checkWin(matrix.array[cell.indexRows][cell.indexCols], cell.indexRows, cell.indexCols)) {
+            alert(cell.value  +': Win');
+            return 0;
+        }    
+        setTimeout(Start, 500);
+    }
+    </script>
+</body>
+
+</html>
