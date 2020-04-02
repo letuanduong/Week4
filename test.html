@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+        output{           
+            width: 30px;
+            height: 30px;
+        }
+        button {
+            width: 40px;
+            height: 40px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.10.2.js"></script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id = 'game'></div>
+ <script>
+/*
+    function check(clickId) {
+        let y = clickId; 
+        var id = $(this).attr('id');    
+    }
+    
+    function reply_click()
+{
+    alert(event.srcElement.id);
+}
+///////////////////////////////
+
+   var reply_click = function()
+{
+    alert("Button clicked, id "+this.id+", text"+this.innerHTML);
+}
+    document.getElementById('1').onclick = reply_click;
+    document.getElementById('2').onclick = reply_click;
+    document.getElementById('3').onclick = reply_click;
+
+
+    $('button').click(function(){
+        alert(this.id);
+        return this.id;
+    });
+
+
+        $('button').on('click', function () {
+        alert(this.id);
+        console.log(this.id)
+    });
+
+        $(document).on('click', 'button', function () {
+        alert(this.id);
+    });
+
+
+
+      let c = document.getElementById('myCanvas');
+        let ctx = c.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(95,50,40,0,2*Math.PI);
+        ctx.stroke();
+
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World",10,50);
+
+ //       var grd = ctx.createLinearGradient(0,0,200,0);
+  //      grd.addColorStop(0,"red");
+    //    grd.addColorStop(1,"white");
+
+    // Fill with gradient
+      //  ctx.fillStyle = grd;
+        ctx.fillRect(10,10,150,80);
+*/
+
+        function Hero(image, top, left, size){
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.getHeroElement = function(){
+        return '<img width="'+ this.size + '"' +
+            ' height="'+ this.size + '"' +
+            ' src="' + this.image +'"' +
+            ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+        }
+
+        this.moveRight = function(){
+        this.left += 19;
+        console.log('ok: ' + this.left);
+            }
+        }
+
+    var hero = new Hero('pikachu.png', 20, 30, 200);
+    function start(){
+        if(hero.left < window.innerWidth - hero.size){
+            hero.moveRight();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 500);
+}
+start();
+
+
+
+
+
+ </script>
+</body>
+</html>

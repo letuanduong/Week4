@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test moving</title>
+    <script src="Keys.js"></script>
+</head>
+<body onkeydown = keyPressHandler(event);>
+    <canvas id = "1"></canvas>
+    <div id = "game"></div>
+    <script>
+  
+/*  let Circle = function(x, y, radian) {
+            this.x = x;
+            this.y = y;
+            this.radian = radian;
+            this.draw =function() {
+                let canvas = document.getElementById('1');
+                let circle = canvas.getContext('2d');
+                circle.beginPath();
+                circle.arc(this.x, this.y, this.radian,0 , 2*Math.PI);
+                circle.stroke();
+            }
+        }
+        for(let i = 100; i < 1000; i += 5) {
+            let circle = new Circle(i, i, 40, 0, 2*Math.PI);
+            circle.draw();
+        }
+*/
+
+
+
+        let Moto = function(img, left, top, size) {
+            this.img = img;
+            this.top = top;
+            this.left = left;
+            this.size = size;
+            this.getMotoElement = function() {
+                return '<img width = "'+this.size+'" height = "'+this.size+'" src = "'+this.img+'" '+
+                    ' style = "top: '+this.top+'px; left: '+this.left+'px; position:absolute; ">';
+            }
+            this.moveRight = function() {
+                this.left += 100;
+                console.log('ok' + this.left);
+                document.getElementById('game').innerHTML = this.getMotoElement();
+            }         
+        }
+        let moto = new Moto('oto.jpg', 20, 20, 200);
+
+        function keyPressHandler(event) {
+        const KEY_LEFT = 37;
+        const KEY_RIGHT = 39;
+        const KEY_UP = 38;
+        const KEY_DOWN = 40;
+        switch (event.keyCode) {
+            case KEY_RIGHT:
+                moto.moveRight();              
+                break;
+            case 37: break;
+            case 39: break;
+            case 40: break;
+        }
+    }
+    
+    window.addEventListener('keydown', event =>{
+        if(event.keyCode == 39) {
+            moto.moveRight();  
+        }
+    }); 
+    
+    
+
+
+    </script>
+</body>
+</html>

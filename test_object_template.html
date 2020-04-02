@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test object OPP</title>
+</head>
+<body>
+    <script>
+
+        ////////////////////////////////////////////////
+        //=========================================
+        //ĐÂY LÀ CÁCH TẠO OBJECT//====================
+        //===========================================
+/*      let person1 = {
+            name : "tuan",
+            age : "34",
+            Info : function() {
+                alert('name' +this.name + 'tuoi' +this.age );
+            }
+        }    
+        alert(person1.name);
+        alert(person1.age);
+        person1.Info();        
+        person1[name] = 'duong';
+        alert(person1[name]);
+*/
+////////////////////////////////////////////////////////
+ /*     let person3 = new Object();
+        person3.name = 'tuan';
+        person3.age = 34;
+        alert(person3.name + person3.age);
+
+        let person4 = new Array();
+        person4[0] = '0';
+        person4[1] = '1';
+        alert(person4[0] + person4[1]);
+*/
+//////////////////////////////////////////////////////////////////////////
+/*
+        let person2 = new function(){
+               this.name = 'ngoc',
+               this.age = '4', 
+               this.Info = function(){
+                    alert(name + ' ' +age);
+               }
+        }
+        alert(person2.name);
+        person2[age] = 34;
+        alert(person2.age);
+        person2.Info();
+////////////////////////////////////////////////////////////////////
+        let person = {
+            age : '',
+            name: '', 
+            data: {
+                 wife: '',
+                 mySon: ''   
+            }
+        }
+        person.age = 34;
+        person.name = 'tuan';
+        person.data['wife'] = 'duong';
+        person.data.mySon = 'ngoc';
+
+        let myMotherName = 'ten';
+        let myMothervalue = 'thuc';
+        person[myMotherName] = myMothervalue;
+        alert(person.age + ' '+ person.name + ' '+ person.data.wife + ' ' + person.data.mySon);
+        alert(person.age + person.name + person.data.wife + person.data.mySon + person.ten);
+
+ */
+ ///////////////////////////////////////////////
+ //========================================================================
+        //ĐÂY LÀ CÁCH TẠO CLASS SAU ĐÓ TẠO OBJECT TỪ CLASS ĐÓ//
+ //=======================================================================
+ /*       function person(type) {
+            this.name = '';
+            this.age = '5';
+            this.getInfo = function() {
+                return this.name + ' ' + this.age;
+            }
+        }
+
+        person.prototype.getInfo2 = function() {
+                return this.age + ' ' + this.name;
+        }
+
+        let perosn1 = new person('tuan');
+        perosn1.name = 'duong';
+        perosn1.age = 34;
+        alert(perosn1.name);
+        alert(perosn1['age']);
+        alert(perosn1.getInfo());
+        alert(perosn1.getInfo2());
+*/
+
+/*        let person = function(name, age, weight, height, course){
+            this.age = 34;
+            this.name = 'tuan';
+            this.weight = 60;
+            this.height = 1.65
+            this.info = function() {
+                return this.age + this.name + this.height + this.weight;
+            }
+            
+        }
+        person5 = new person('tuan', 34, 100, 180);
+        alert(person5.info());
+*/
+
+    </script>
+</body>
+
+</html>

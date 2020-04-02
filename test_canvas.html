@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            width: 1000px
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width = "1000"px height="5000"px style="border: 2px solid #210f70;"></canvas>
+    <script>
+        let c = document.getElementById('canvas');
+        let ctx = c.getContext('2d');
+        ctx.moveTo(500,500);
+        ctx.lineTo(200, 200);
+        ctx.lineTo(0, 200);
+        ctx.stroke();
+
+        let img = new Image;
+        img.src = "oto.jpg";
+        ctx.drawImage(img, 500, 500);
+
+        ctx.beginPath();
+        ctx.arc(100, 100, 50, 0, Math.PI);
+        ctx.stroke();
+
+        ctx.font = "30px Arial";
+        ctx.fillText('Hello world', 200, 500);
+
+/*        let grd = ctx.createLinearGradient(0, 0, 200, 0);
+        grd.addCoLorStop(0, "red");
+        grd.addCoLorStop(1, "while"); 
+    
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);    
+
+/*        let c = document.getElementById('myCanvas');
+        let ctx = c.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(95,50,40,0,2*Math.PI);
+        ctx.stroke();
+
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World",10,50);
+
+        var grd = ctx.createLinearGradient(0,0,200,0);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+
+    // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10,10,150,80);
+*/
+
+    </script>
+
+</body>
+
+</html>
